@@ -1,5 +1,6 @@
 /**
- * @typedef {import("./p5/types/index")} Graphics
+ * @typedef {import("./p5/types").Image} Image
+ *
  * @typedef {Object} Cubo
  * @property {number} x
  * @property {number} y
@@ -14,15 +15,17 @@
 /** @type {Cubo[]} */
 let cubi = [];
 
-let copie = 20;
+let copie = 25;
 
-/** @type {Graphics} */
-let g;
+/** @type {Image} */
+let planetTexture;
+
+function preload() {
+  planetTexture = loadImage("./planet.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight, "webgl");
-
-  g = createGraphics(100, 100);
 
   let distanza = 1000;
   for (let i = 0; i < copie; i++) {
@@ -31,7 +34,7 @@ function setup() {
       y: random(-distanza, distanza),
       z: random(-distanza, distanza),
       size: 500,
-      color: random(["pink", "yellow", "blue"]),
+      color: random(["red", "yellow", "blue", "green"]),
       rotationFunction: random([rotateX, rotateY]),
     };
     cubi.push(cubo);
@@ -52,8 +55,17 @@ function draw() {
     cubo.rotationFunction(velocita);
     rotateZ(velocita);
 
-    fill(cubo.color);
-    torus(cubo.size / 2, cubo.size / 8);
+    //fill(cubo.color);
+    noFill(); //riempimento
+    stroke(cubo.color);
+    strokeWeight(10);
+    ellipse(0, 0, cubo.size);
+    // torus(cubo.size / 2, cubo.size / 8);
+
+    noStroke();
+    texture(planetTexture);
+    sphere(cubo.size / 4);
+
     pop();
   }
 }
