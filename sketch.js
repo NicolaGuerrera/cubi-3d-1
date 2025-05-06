@@ -1,4 +1,5 @@
 /**
+ * @typedef {import("./p5/types/index")} Graphics
  * @typedef {Object} Cubo
  * @property {number} x
  * @property {number} y
@@ -36,7 +37,7 @@ function draw() {
   background(220);
   orbitControl();
   rotateY(frameCount * 0.001);
-  // noStroke();
+  noStroke();
 
   for (let cubo of cubi) {
     push();
@@ -46,7 +47,7 @@ function draw() {
     cubo.rotationFunction(velocita);
     rotateZ(velocita);
 
-    fill(cubo.color);
+    //fill(cubo.color);
     box(cubo.size);
     pop();
   }
