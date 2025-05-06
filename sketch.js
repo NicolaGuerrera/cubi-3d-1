@@ -16,8 +16,13 @@ let cubi = [];
 
 let copie = 30;
 
+/** @type {Graphics} */
+let g;
+
 function setup() {
   createCanvas(windowWidth, windowHeight, "webgl");
+
+  g = createGraphics(100, 100);
 
   let distanza = 500;
   for (let i = 0; i < copie; i++) {
