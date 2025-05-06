@@ -1,4 +1,18 @@
+/**
+ * @typedef {Object} Cubo
+ * @property {number} x
+ * @property {number} y
+ * @property {number} z
+ * @property {number} size
+ * @property {number} color
+ * @property {Function} rotationFunction
+ */
+
+//
+
+/** @type {Cubo[]} */
 let cubi = [];
+
 let copie = 30;
 
 function setup() {
