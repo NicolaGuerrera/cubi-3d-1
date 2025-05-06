@@ -14,7 +14,7 @@
 /** @type {Cubo[]} */
 let cubi = [];
 
-let copie = 15;
+let copie = 20;
 
 /** @type {Graphics} */
 let g;
@@ -22,9 +22,9 @@ let g;
 function setup() {
   createCanvas(windowWidth, windowHeight, "webgl");
 
-  g = createGraphics(50, 50);
+  g = createGraphics(100, 100);
 
-  let distanza = 500;
+  let distanza = 1000;
   for (let i = 0; i < copie; i++) {
     let cubo = {
       x: random(-distanza, distanza),
@@ -52,8 +52,8 @@ function draw() {
     cubo.rotationFunction(velocita);
     rotateZ(velocita);
 
-    //fill(cubo.color);
-    box(cubo.size);
+    fill(cubo.color);
+    torus(cubo.size / 2, cubo.size / 8);
     pop();
   }
 }
